@@ -7,11 +7,24 @@ export default function Dashboard({ isDarkMode }) {
     "Impact Ready", "Friendly Footprint", "Clean Streak", "Explorer"
   ];
 
+  const badgeDescriptions = [
+    "Welcome aboard! You created your account and joined the mission.",
+    "Great job! You logged your very first cleanup activity.",
+    "You’ve adopted your first cleanup zone — taking responsibility locally.",
+    "Your profile is complete and ready to show your impact.",
+    "You earned your first impact point — every bit counts!",
+    "You invited a friend or shared the app to grow the community.",
+    "You cleaned for two days in a row — keep the momentum going!",
+    "You explored three different zones on the map — discovering your area."
+  ];
+
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState(null);
+  const [selectedBadgeDescription, setSelectedBadgeDescription] = useState('');
 
   const openModal = (index) => {
     setSelectedBadge(badgeSlots[index]);
+    setSelectedBadgeDescription(badgeDescriptions[index]);
     setModalVisible(true);
   };
 
@@ -35,6 +48,7 @@ export default function Dashboard({ isDarkMode }) {
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
             <Text style={styles.modalTitle}>{selectedBadge}</Text>
+            <Text style={styles.modalDescription}>{selectedBadgeDescription}</Text>
             <Button title="Close" onPress={() => setModalVisible(false)} />
           </View>
         </View>
@@ -57,5 +71,6 @@ const styles = StyleSheet.create({
   badgeText: { fontSize: 18, fontWeight: 'bold', color: '#444' },
   modalOverlay: { flex: 1, backgroundColor: '#00000099', justifyContent: 'center', alignItems: 'center' },
   modalBox: { backgroundColor: '#fff', padding: 20, borderRadius: 10, minWidth: 250, alignItems: 'center' },
-  modalTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 15 }
+  modalTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 10 },
+  modalDescription: { fontSize: 16, color: '#555', textAlign: 'center', marginBottom: 15 }
 });
