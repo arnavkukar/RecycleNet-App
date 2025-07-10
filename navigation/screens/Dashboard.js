@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
+import * as config from '../config';
+
 
 const screenWidth = Dimensions.get("window").width;
 const totalTrash = 700
@@ -15,7 +17,7 @@ export default function Dashboard({ isDarkMode }) {
       
       <View style={[styles.totalCard, isDarkMode && styles.darktotalCard]}>
         <Text style={[styles.totalTrashHeader, isDarkMode && styles.darktotalTrashHeader]}>🗑️Total Trash Cleaned:</Text>
-        <Text style={styles.totalTrashValue}>{totalTrash} lbs</Text>
+        <Text style={styles.totalTrashValue}>{config.TOTAL_TRASH} lbs</Text>
       </View>
 
       <View style={[styles.impactBox, isDarkMode && styles.darkImpactBox]}>
