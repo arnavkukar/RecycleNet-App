@@ -1,16 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
+import * as config from '../../config';
+
 
 export default function Settings({ isDarkMode, setIsDarkMode }) {
   return (
     <View style={[styles.container, isDarkMode && styles.dark]}>
-      <Text style={[styles.text, isDarkMode && styles.darkText]}>
-        Dark Mode
-      </Text>
-      <Switch
-        value={isDarkMode}
-        onValueChange={() => setIsDarkMode(!isDarkMode)}
-      />
+      <Text style={[styles.header, isDarkMode && styles.darkHeader]}>Settings</Text>
+      <View style={[styles.darkSetting]}>
+        <Text style={[styles.text, isDarkMode && styles.darkText]}>
+          Dark Mode
+        </Text>
+        <Switch
+          value={isDarkMode}
+          onValueChange={() => setIsDarkMode(!isDarkMode)}
+        />
+      </View>
     </View>
   );
 }
@@ -18,10 +23,11 @@ export default function Settings({ isDarkMode, setIsDarkMode }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 50 // adjust as needed for comfortable spacing
   },
+
   dark: {
     backgroundColor: '#111',
   },
@@ -33,4 +39,7 @@ const styles = StyleSheet.create({
   darkText: {
     color: '#fff',
   },
+  header: {color: config.PRIMARY_ACCENT, fontWeight: 'bold', fontSize: 40, alignSelf: 'center', marginTop: 1},
+  darkSetting: {flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: '80%', marginTop: 30},
+
 });

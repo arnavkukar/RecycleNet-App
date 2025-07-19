@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, Button } from 'react-native';
+import * as config from '../../config';
+
 
 export default function Dashboard({ isDarkMode }) {
   const badgeSlots = [

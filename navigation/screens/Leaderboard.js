@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import * as config from '../../config';
+
 
 export default function Dashboard({ isDarkMode }) {
   return (
