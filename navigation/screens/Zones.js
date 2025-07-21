@@ -1,11 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, Button} from 'react-native';
 import * as config from '../../config';
 import MapView, { Marker } from 'react-native-maps';
 
 export default function Dashboard({ isDarkMode }) {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={[styles.container, isDarkMode && styles.dark]}>
+    <ScrollView contentContainerStyle={[styles.container, isDarkMode && styles.dark]}>
       <Text style={[styles.header]}>
         My Zones
       </Text>
@@ -24,6 +25,21 @@ export default function Dashboard({ isDarkMode }) {
           description="This is where you cleaned!"
         />
       </MapView>
+      <TouchableOpacity
+        style={[styles.zonestatusButton, isDarkMode && styles.darkzonestatusButton]}
+        activeOpacity={0.3}
+        onPress={() => setModalVisible(true)}
+
+      >
+        <Text style={[styles.zonestatusText, isDarkMode && styles.darkzonestatusText]}>View Zone Status</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.addzoneButton, isDarkMode && styles.darkaddzoneButton]}
+        activeOpacity={0.3}
+        onPress={() => alert('You have clicked on "Add Zone"')}
+      >
+        <Text style={[styles.addzoneText, isDarkMode && styles.darkaddzoneText]}>Add Zone</Text>
+      </TouchableOpacity>
       <View style={[styles.impactBox, isDarkMode && styles.darkImpactBox]}>
           <Text style={styles.impactHeader}>Your Zone Activity</Text>
           <View style={styles.boxDivider} />
@@ -42,7 +58,25 @@ export default function Dashboard({ isDarkMode }) {
           </View>
 
       </View>
-    </View>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#00000088' }}>
+          <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10, minWidth: '70%' }}>
+            <Text style={{ fontSize: 18, marginBottom: 10 }}>Zone Status</Text>
+            <Text style={{ fontSize: 14, color: '#333' }}>
+              You share this zone with 2 others. Zone area: 0.5 sq miles.
+            </Text>
+            <Button title="Close" onPress={() => setModalVisible(false)} />
+          </View>
+        </View>
+      </Modal>
+      
+
+    </ScrollView>
   );
 }
 
@@ -53,7 +87,7 @@ const styles = StyleSheet.create({
   darkText: { color: '#fff' },
   header: { color: config.PRIMARY_ACCENT, fontWeight: 'bold', fontSize: 40, alignSelf: 'center', marginTop: 1 },
   map: { width: '90%', height: 300, borderRadius: 12, marginTop: 20},
-  impactBox: { width: '90%', borderRadius: 12, borderWidth: 1, borderColor: '#ccc', padding: 10, backgroundColor: '#f9f9f9', marginTop: 10 },
+  impactBox: { width: '90%', borderRadius: 12, borderWidth: 1, borderColor: '#ccc', padding: 10, backgroundColor: '#f9f9f9', marginTop: 15 },
   darkImpactBox: { borderColor: '#444', backgroundColor: '#222' },
   impactHeader: { fontSize: 22, fontWeight: 'bold', color: config.PRIMARY_ACCENT, textAlign: 'center', marginBottom: 3, marginTop: 8 },
   boxDivider: { height: 1, backgroundColor: '#CCCCCC', width: '65%', alignSelf: 'center', marginVertical: 10 },
@@ -61,4 +95,12 @@ const styles = StyleSheet.create({
   impactLabel: { fontSize: 16, color: '#333', fontWeight: '500' },
   darkText: { color: '#ddd' },
   impactValue: { fontSize: 16, fontWeight: 'bold', color: config.PRIMARY_ACCENT },
+  zonestatusButton: { backgroundColor: '#10B981', paddingVertical: 16, paddingHorizontal: 25, borderRadius: 8, marginTop: 14, width: '90%', alignItem: 'center', justifyContent: 'flex-start', borderWidth: 1, borderColor: '#ccc'},
+  darkzonestatusButton: { backgroundColor: '#222', borderColor: '#444'},
+  zonestatusText: { color: '#fff', fontSize: 16, fontWeight: 'bold', marginLeft: '27%'},
+  darkzonestatusText: { color: config.PRIMARY_ACCENT},
+  addzoneButton: { backgroundColor: '#10B981', paddingVertical: 16, paddingHorizontal: 25, borderRadius: 8, marginTop: 14, width: '90%', alignItem: 'center', justifyContent: 'flex-start', borderWidth: 1, borderColor: '#ccc'},
+  darkaddzoneButton: { backgroundColor: '#222', borderColor: '#444'},
+  addzoneText: { color: '#fff', fontSize: 16, fontWeight: 'bold', marginLeft: '38%'},
+  darkaddzoneText: { color: config.PRIMARY_ACCENT}
 });
