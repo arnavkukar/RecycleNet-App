@@ -64,9 +64,9 @@ export default function Dashboard({ isDarkMode }) {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#00000088' }}>
-          <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10, minWidth: '70%' }}>
-            <Text style={{ fontSize: 18, marginBottom: 10 }}>Zone Status</Text>
+        <View style={[styles.modalOverlay]}>
+          <View style={[styles.modalBox, isDarkMode && styles.darkmodalBox]}>
+            <Text style={[styles.modalHeader, isDarkMode && styles.darkmodalHeader]}>Zone Status</Text>
             <Text style={{ fontSize: 14, color: '#333' }}>
               You share this zone with 2 others. Zone area: 0.5 sq miles.
             </Text>
@@ -102,5 +102,10 @@ const styles = StyleSheet.create({
   addzoneButton: { backgroundColor: '#10B981', paddingVertical: 16, paddingHorizontal: 25, borderRadius: 8, marginTop: 14, width: '90%', alignItem: 'center', justifyContent: 'flex-start', borderWidth: 1, borderColor: '#ccc'},
   darkaddzoneButton: { backgroundColor: '#222', borderColor: '#444'},
   addzoneText: { color: '#fff', fontSize: 16, fontWeight: 'bold', marginLeft: '38%'},
-  darkaddzoneText: { color: config.PRIMARY_ACCENT}
+  darkaddzoneText: { color: config.PRIMARY_ACCENT},
+  modalOverlay: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#00000088'},
+  modalBox: { backgroundColor: 'white', padding: 20, borderRadius: 10, minWidth: '20%', alignItems: 'center', height: 400},
+  darkmodalBox: { backgroundColor: '#222'},
+  modalHeader: {color: '#000', fontWeight: 'bold', fontSize: 30},
+  darkmodalHeader: { color: '#fff'},
 });
