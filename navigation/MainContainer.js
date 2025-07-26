@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import Dashboard from '../navigation/screens/Dashboard';
 import Leaderboard from '../navigation/screens/Leaderboard';
@@ -34,15 +35,16 @@ export default function MainContainer({ isDarkMode, setIsDarkMode }) {
     tabBarActiveTintColor: '#10B981',
     tabBarInactiveTintColor: 'grey',
     tabBarStyle: {
-      backgroundColor: isDarkMode ? '#111' : '#f9f9f9',
+      backgroundColor: isDarkMode ? '#111' : '#f2f2f2',
     },
     // Header hidden cleanly:
     headerShown: false,
   });
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#111' : '#f9f9f9' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#111' : '#f2f2f2' }}>
       <NavigationContainer>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} translucent backgroundColor="transparent" />
         <Tab.Navigator screenOptions={screenOptions}>
           <Tab.Screen name="Dashboard">
             {(props) => <Dashboard {...props} isDarkMode={isDarkMode} />}

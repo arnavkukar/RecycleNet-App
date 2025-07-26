@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, Button } from 'react-native';
 import * as config from '../../config';
 
-
 export default function Dashboard({ isDarkMode }) {
-  const badgeSlots = [
+  const starterBadges = [
     "Fresh Start", "First Cleanup", "Zone Claimer", "Profile Ready",
     "Impact Ready", "Friendly Footprint", "Clean Streak", "Explorer"
   ];
 
-  const badgeDescriptions = [
+  const starterDescriptions = [
     "Welcome aboard! You created your account and joined the mission.",
     "Great job! You logged your very first cleanup activity.",
     "You’ve adopted your first cleanup zone — taking responsibility locally.",
@@ -20,32 +19,58 @@ export default function Dashboard({ isDarkMode }) {
     "You explored three different zones on the map — discovering your area."
   ];
 
+  const cleanupBadges = [
+    "Quick Sweep", "Zone Hero", "Weekly Warrior", "Trash Titan"
+  ];
+
+  const cleanupDescriptions = [
+    "Completed 5 cleanups in a week. Fast and consistent!",
+    "Cleaned the same zone 10 times — true dedication.",
+    "Logged cleanups every week for a month. Legendary!",
+    "Cleaned up over 100 lbs of trash — massive impact!"
+  ];
+
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState(null);
   const [selectedBadgeDescription, setSelectedBadgeDescription] = useState('');
 
-  const openModal = (index) => {
-    setSelectedBadge(badgeSlots[index]);
-    setSelectedBadgeDescription(badgeDescriptions[index]);
+  const openModal = (badgeName, badgeDescription) => {
+    setSelectedBadge(badgeName);
+    setSelectedBadgeDescription(badgeDescription);
     setModalVisible(true);
   };
+
+  const renderBadgeSection = (title, badges, descriptions) => (
+    <View style={{ width: '100%' }}>
+      <Text style={[styles.lightHeader, isDarkMode && styles.darkHeader]}>{title}</Text>
+      <View style={styles.divider} />
+      <View style={styles.badgeGrid}>
+        {badges.map((badgeName, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.badgeCircle}
+            onPress={() => openModal(badgeName, descriptions[index])}
+          >
+            <Text style={styles.badgeText}>{index + 1}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+  );
 
   return (
     <View style={[styles.container, isDarkMode && styles.dark]}>
       <Text style={styles.title}>Your Badges</Text>
       <Text style={styles.description}>Earn badges as you clean zones.</Text>
-      <Text style={styles.progressText}>6 / 24 badges unlocked</Text>
-      <Text style={[styles.lightHeader, isDarkMode && styles.darkHeader]}>Starter Badges</Text>
-      <View style={styles.divider} />
+      <Text style={styles.progressText}>10 / 24 badges unlocked</Text>
 
-      <View style={styles.badgeGrid}>
-        {badgeSlots.map((badgeName, index) => (
-          <TouchableOpacity key={index} style={styles.badgeCircle} onPress={() => openModal(index)}>
-            <Text style={styles.badgeText}>{index + 1}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      {/* Starter Badges */}
+      {renderBadgeSection("Starter Badges", starterBadges, starterDescriptions)}
 
+      {/* Cleanup Badges */}
+      {renderBadgeSection("Cleanup Badges", cleanupBadges, cleanupDescriptions)}
+
+      {/* Modal */}
       <Modal visible={modalVisible} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
