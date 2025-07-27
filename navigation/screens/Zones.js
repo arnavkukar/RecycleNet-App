@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Modal, Button} fr
 import * as config from '../../config';
 import MapView, { Marker } from 'react-native-maps';
 
-export default function Dashboard({ isDarkMode }) {
+export default function Zones({ isDarkMode }) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={[styles.wrapper, isDarkMode && styles.dark]}>
@@ -112,4 +112,5 @@ const styles = StyleSheet.create({
   darkmodalBox: { backgroundColor: '#222'},
   modalHeader: {color: '#000', fontWeight: 'bold', fontSize: 30},
   darkmodalHeader: { color: '#fff'},
+  
 });
