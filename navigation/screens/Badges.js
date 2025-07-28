@@ -99,7 +99,7 @@ export default function Badges({ isDarkMode }) {
   );
 
   return (
-    <ScrollView contentContainerStyle={[styles.container, isDarkMode && styles.dark]}>
+    <ScrollView bounces={false} contentContainerStyle={[styles.container, isDarkMode && styles.dark]}>
       <Text style={styles.title}>Your Badges</Text>
       <Text style={styles.description}>Earn badges as you clean zones.</Text>
       <Text style={styles.progressText}>10 / 24 badges unlocked</Text>
@@ -128,7 +128,7 @@ export default function Badges({ isDarkMode }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 30 },
+  container: { justifyContent: 'flex-start', alignItems: 'center', paddingTop: 30, paddingBottom: 50},
   dark: { backgroundColor: '#111' },
   title: { fontSize: 30, fontWeight: 'bold', color: '#10B981' },
   description: { color: '#888', fontSize: 12, marginTop: 20 },

@@ -6,7 +6,23 @@ import * as config from '../../config';
 
 
 const screenWidth = Dimensions.get("window").width;
-const totalTrash = 700
+const getPastFiveDays = () => {
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const today = new Date();
+  const pastDays = [];
+
+  for (let i = 1; i <= 5; i++) {
+    const pastDate = new Date();
+    pastDate.setDate(today.getDate() - i);
+    pastDays.push(daysOfWeek[pastDate.getDay()]);
+  }
+
+  return pastDays.reverse();
+};
+
+// Example usage
+const pastFiveDays = getPastFiveDays();
+
 
 export default function Dashboard({ isDarkMode }) {
   return (
@@ -47,10 +63,10 @@ export default function Dashboard({ isDarkMode }) {
       <View style={[styles.chartContainer, isDarkMode && styles.darkChartContainer]}>
         <LineChart
           data={{
-            labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
-            datasets: [{ data: [1.2, 0.8, 1.5, 0.0, 2.3] }]
+            labels: pastFiveDays,
+            datasets: [{ data: config.DATA_PAST_FIVE }]
           }}
-          width={screenWidth * 0.87} // slightly reduced to match padding
+          width={screenWidth * 0.88} // slightly reduced to match padding
           height={220}
           yAxisSuffix=" lbs"
           fromZero
@@ -62,7 +78,7 @@ export default function Dashboard({ isDarkMode }) {
             color: (opacity = 1) => `rgba(16, 185, 129, ${opacity})`,
             labelColor: (opacity = 1) => isDarkMode ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 0, 0, ${opacity})`,
             style: { borderRadius: 12 },
-            propsForDots: { r: "5", strokeWidth: "2", stroke: config.PRIMARY_ACCENT }
+            propsForDots: { r: "5", strokeWidth: "3", stroke: config.PRIMARY_ACCENT }
           }}
           bezier
           style={{ alignSelf: 'center', borderRadius: 12, marginVertical: 0 }}
