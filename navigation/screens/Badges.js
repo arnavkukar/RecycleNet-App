@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, Modal, TouchableOpacity, Button, ScrollView} from 'react-native';
 import * as config from '../../config';
 
-export default function Dashboard({ isDarkMode }) {
+export default function Badges({ isDarkMode }) {
   const starterBadges = [
     "Fresh Start", "First Cleanup", "Zone Claimer", "Profile Ready",
     "Impact Ready", "Friendly Footprint", "Clean Streak", "Explorer"
@@ -20,15 +20,55 @@ export default function Dashboard({ isDarkMode }) {
   ];
 
   const cleanupBadges = [
-    "Quick Sweep", "Zone Hero", "Weekly Warrior", "Trash Titan"
+    "Quick Sweep",
+    "Zone Hero",
+    "Weekly Warrior",
+    "Trash Titan",
+    "Neighborhood Champ",
+    "Litter Sniper",
+    "Eco Streak",
+    "Ultimate Recycler"
   ];
 
   const cleanupDescriptions = [
     "Completed 5 cleanups in a week. Fast and consistent!",
     "Cleaned the same zone 10 times — true dedication.",
-    "Logged cleanups every week for a month. Legendary!",
-    "Cleaned up over 100 lbs of trash — massive impact!"
+    "Cleaned every week for a month. Legendary!",
+    "Cleaned up over 100 lbs of trash — massive impact!",
+    "Cleaned 3 or more neighboring zones. Local hero!",
+    "Picked up 10+ pounds of litter in one cleanup. Sharp eyes!",
+    "Cleaned 7 days in a row. Nature’s MVP!",
+    "Sorted recyclables in 5 cleanups. Saving the planet one bottle at a time."
   ];
+
+  const badgeSlots = [
+    "Fresh Start", "First Cleanup", "Zone Claimer", "Profile Ready",
+    "Impact Ready", "Friendly Footprint", "Clean Streak", "Explorer",
+    "Tenacious Tracker", "Quarter Crusher", "Trash Terminator", "100 Club",
+    "One-Year Streak", "1,000 Pounds Later", "Across the Map", "Top 10 Leader"
+  ];
+
+  const badgeDescriptions = [
+    "Welcome aboard! You created your account and joined the mission.",
+    "Great job! You logged your very first cleanup activity.",
+    "You’ve adopted your first cleanup zone — taking responsibility locally.",
+    "Your profile is complete and ready to show your impact.",
+    "You earned your first impact point — every bit counts!",
+    "You invited a friend or shared the app to grow the community.",
+    "You cleaned for two days in a row — keep the momentum going!",
+    "You explored three different zones on the map — discovering your area.",
+    "You’ve logged 10 cleanups!",
+    "25 cleanups completed — serious commitment!",
+    "50 cleanups and counting. You're unstoppable!",
+    "100 cleanups — a major impact milestone!",
+    "You’ve been cleaning for a whole year — amazing consistency!",
+    "1,000 pounds of trash removed — real environmental hero stuff.",
+    "You’ve cleaned in 5 or more different zones!",
+    "You made it to the top 10 on the leaderboard. You're elite!"
+  ];
+
+
+
 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState(null);
@@ -59,7 +99,7 @@ export default function Dashboard({ isDarkMode }) {
   );
 
   return (
-    <View style={[styles.container, isDarkMode && styles.dark]}>
+    <ScrollView contentContainerStyle={[styles.container, isDarkMode && styles.dark]}>
       <Text style={styles.title}>Your Badges</Text>
       <Text style={styles.description}>Earn badges as you clean zones.</Text>
       <Text style={styles.progressText}>10 / 24 badges unlocked</Text>
@@ -69,6 +109,9 @@ export default function Dashboard({ isDarkMode }) {
 
       {/* Cleanup Badges */}
       {renderBadgeSection("Cleanup Badges", cleanupBadges, cleanupDescriptions)}
+
+      {/* Milestone Badges */}
+      {renderBadgeSection("Milestone Badges", cleanupBadges, cleanupDescriptions)}
 
       {/* Modal */}
       <Modal visible={modalVisible} transparent animationType="fade">
@@ -80,7 +123,7 @@ export default function Dashboard({ isDarkMode }) {
           </View>
         </View>
       </Modal>
-    </View>
+    </ScrollView>
   );
 }
 
