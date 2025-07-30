@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   darktotalCard: { borderColor: '#444', backgroundColor: '#222' },
   totalTrashHeader: { fontSize: 20, color: '#333', fontWeight: '500' },
   totalTrashValue: { fontSize: 20, fontWeight: 'bold', color: config.PRIMARY_ACCENT },
-  todayTrashText: { fontSize: 16, color: '#888', marginTop: 7, marginLeft: 100},
+  todayTrashText: { fontSize: 16, color: '#888', marginTop: 2, marginLeft: 100},
   darktotalTrashHeader: { fontSize: 21, color: '#fff', marginTop: -7, marginLeft: -10},
   darktotalTrashValue: { fontSize: 20, fontWeight: 'bold', color: config.PRIMARY_ACCENT},
   chartContainer: { width: '90%', borderRadius: 12, borderWidth: 1, borderColor: '#ccc', backgroundColor: '#f9f9f9', padding: 5, marginTop: 11 },

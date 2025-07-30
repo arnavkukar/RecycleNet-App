@@ -2,35 +2,53 @@ import React from 'react';
 import { View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as config from '../../config';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 export default function Settings({ isDarkMode, setIsDarkMode }) {
   const navigation = useNavigation();
 
   return (
     <View style={[styles.container, isDarkMode && styles.dark]}>
-      <Text style={[styles.header, isDarkMode && styles.darkText]}>Settings</Text>
+      <Text style={[styles.header, isDarkMode && styles.darkHeader]}>Settings</Text>
 
       {/* Dark Mode Toggle */}
       <View style={[styles.darkSetting]}>
-        <Text style={[styles.text, isDarkMode && styles.darkText]}>Dark Mode</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Ionicons
+            name={isDarkMode ? 'moon' : 'moon-outline'}
+            size={22}
+            color={isDarkMode ? '#FFF' : '#000'}
+            style={{ marginRight: 8 }}
+          />
+          <Text style={[styles.text, isDarkMode && styles.darkText]}>Dark Mode</Text>
+        </View>
         <Switch
           value={isDarkMode}
           onValueChange={() => setIsDarkMode(!isDarkMode)}
-          trackColor={{ false: '#767577', true: config.PRIMARY_ACCENT }}
-          thumbColor={isDarkMode ? '#fff' : config.PRIMARY_ACCENT}
         />
       </View>
+
 
       {/* Navigate to Account Info */}
       <TouchableOpacity
         style={[styles.optionBox, isDarkMode && styles.optionBoxDark]}
         onPress={() => navigation.navigate('AccountInfo')}
       >
-        <Text style={[styles.optionText, isDarkMode && styles.darkText]}>
-          Account Info
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Ionicons
+            name="person-circle-outline"
+            size={26}
+            color={isDarkMode ? '#FFF' : '#000'}
+            style={{ marginLeft: -16 }}
+          />
+          <Text style={[styles.optionText, isDarkMode && styles.darkText]}>
+            Account
+          </Text>
+        </View>
         <Text style={[styles.arrow, isDarkMode && styles.darkText]}>{'>'}</Text>
       </TouchableOpacity>
+
     </View>
   );
 }
@@ -60,6 +78,9 @@ const styles = StyleSheet.create({
   darkText: {
     color: '#FFF',
   },
+  darkHeader: {
+    color: config.PRIMARY_ACCENT
+  },
   darkSetting: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -69,7 +90,7 @@ const styles = StyleSheet.create({
   },
   optionBox: {
     width: '80%',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#fff',
     padding: 15,
     borderRadius: 10,
     flexDirection: 'row',
@@ -78,10 +99,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   optionBoxDark: {
-    backgroundColor: '#222',
+    backgroundColor: '#111',
   },
   optionText: {
-    fontSize: 16,
+    fontSize: 18,
+    marginLeft: 7,
   },
   arrow: {
     fontSize: 18,
