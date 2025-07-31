@@ -33,7 +33,7 @@ export default function Settings({ isDarkMode, setIsDarkMode }) {
       {/* Navigate to Account Info */}
       <TouchableOpacity
         style={[styles.optionBox, isDarkMode && styles.optionBoxDark]}
-        onPress={() => navigation.navigate('AccountInfo')}
+        onPress={() => navigation.navigate('Account')}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Ionicons
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: '#FFF',
+    backgroundColor: '#F2F2F2',
   },
   dark: {
     backgroundColor: '#111',
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   optionBox: {
     width: '80%',
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
     padding: 15,
     borderRadius: 10,
     flexDirection: 'row',

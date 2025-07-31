@@ -1,21 +1,36 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { SafeAreaView, StatusBar, View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
+import {} from 'react-native';
 
 import Dashboard from '../navigation/screens/Dashboard';
 import Leaderboard from '../navigation/screens/Leaderboard';
 import Settings from '../navigation/screens/Settings';
 import Badges from '../navigation/screens/Badges';
 import Zones from '../navigation/screens/Zones';
-import AccountInfo from '../navigation/screens/AccountInfo'; // <--- Add this line
+import AccountInfo from '../navigation/screens/AccountInfo';
+
+import * as config from '../../config';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 export default function MainContainer({ isDarkMode, setIsDarkMode }) {
+  const MyTheme = {
+    dark: isDarkMode,
+    colors: {
+      primary: config.PRIMARY_ACCENT,
+      background: isDarkMode ? '#000' : '#f2f2f2',
+      card: '#fff',
+      text: isDarkMode ? '#fff' : '#000',
+      border: 'gray',
+      notification: 'tomato',
+    },
+  };
+
   const screenOptions = ({ route }) => ({
     tabBarIcon: ({ focused, color, size }) => {
       let iconName;
@@ -28,11 +43,14 @@ export default function MainContainer({ isDarkMode, setIsDarkMode }) {
       return <Ionicons name={iconName} size={size} color={color} />;
     },
     tabBarActiveTintColor: '#10B981',
-    tabBarInactiveTintColor: 'grey',
+    tabBarInactiveTintColor: 'gray',
     tabBarStyle: {
-      backgroundColor: isDarkMode ? '#111' : '#f2f2f2',
+      backgroundColor: '#fff',
     },
-    headerShown: false,
+    headerStyle: {
+      backgroundColor: '#fff',
+    },
+    headerTintColor: '#000',
   });
 
   const TabScreens = () => (
@@ -56,12 +74,16 @@ export default function MainContainer({ isDarkMode, setIsDarkMode }) {
   );
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#111' : '#f2f2f2' }}>
-      <NavigationContainer>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} translucent backgroundColor="transparent" />
-        <Stack.Navigator>
-          <Stack.Screen name="Main" component={TabScreens} options={{ headerShown: false }} />
-          <Stack.Screen name="AccountInfo">
+    <SafeAreaView style={{ flex: 1, backgroundColor: isDarkMode ? '#000' : '#f2f2f2' }}>
+      <NavigationContainer theme={MyTheme}>
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          translucent
+          backgroundColor="transparent"
+        />
+        <Stack.Navigator screenOptions={screenOptions}>
+          <Stack.Screen name="Main" component={TabScreens} />
+          <Stack.Screen name="Account">
             {(props) => <AccountInfo {...props} isDarkMode={isDarkMode} />}
           </Stack.Screen>
         </Stack.Navigator>
