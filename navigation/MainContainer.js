@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView, StatusBar, View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
-import {} from 'react-native';
 
 import Dashboard from '../navigation/screens/Dashboard';
 import Leaderboard from '../navigation/screens/Leaderboard';
@@ -13,7 +12,7 @@ import Badges from '../navigation/screens/Badges';
 import Zones from '../navigation/screens/Zones';
 import AccountInfo from '../navigation/screens/AccountInfo';
 
-import * as config from '../../config';
+import * as config from '../config';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

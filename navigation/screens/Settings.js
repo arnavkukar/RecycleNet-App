@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#111',
   },
   header: {
-    color: config.PRIMARY_ACCENT,
-    fontWeight: 'bold',
+    //color: config.PRIMARY_ACCENT,
+    //fontWeight: 'bold',
     fontSize: 40,
     alignSelf: 'center',
     marginBottom: 30,
