@@ -29,7 +29,7 @@ export default function AccountInfo({ isDarkMode }) {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#FFF' },
   dark: { backgroundColor: '#111' },
-  header: { fontSize: 32, fontWeight: 'bold', marginBottom: 20, color: '#10B981' },
+  header: { fontSize: 32, fontWeight: '423', marginBottom: 20, color: '#10B981' },
   darkText: { color: '#FFF' },
   infoBox: {
     backgroundColor: '#EEE',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   label: {
-    fontWeight: 'bold',
+    fontWeight: '423',
     fontSize: 16,
     marginTop: 10,
     color: '#333'

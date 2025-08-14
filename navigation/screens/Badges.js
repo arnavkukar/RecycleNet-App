@@ -130,17 +130,17 @@ export default function Badges({ isDarkMode }) {
 const styles = StyleSheet.create({
   container: { justifyContent: 'flex-start', alignItems: 'center', paddingTop: 30, paddingBottom: 50},
   dark: { backgroundColor: '#111' },
-  title: { fontSize: 30, fontWeight: 'bold', color: '#10B981' },
+  title: { fontSize: 30, fontWeight: '423', color: '#10B981' },
   description: { color: '#888', fontSize: 12, marginTop: 20 },
   progressText: { color: '#10B981', marginTop: 20, fontSize: 20 },
-  lightHeader: { color: '#355E3B', fontWeight: 'bold', fontSize: 30, marginTop: 30, alignSelf: 'flex-start', paddingLeft: 20 },
-  darkHeader: { color: '#D8EAD2', fontWeight: 'bold', fontSize: 30, marginTop: 30, alignSelf: 'flex-start', paddingLeft: 20 },
+  lightHeader: { color: '#355E3B', fontWeight: '423', fontSize: 30, marginTop: 30, alignSelf: 'flex-start', paddingLeft: 20 },
+  darkHeader: { color: '#D8EAD2', fontWeight: '423', fontSize: 30, marginTop: 30, alignSelf: 'flex-start', paddingLeft: 20 },
   divider: { height: 1, backgroundColor: '#CCCCCC', width: '100%', alignSelf: 'center', marginVertical: 10 },
   badgeGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: 20, rowGap: 20, marginTop: 10, paddingHorizontal: 20 },
   badgeCircle: { width: 70, height: 70, borderRadius: 35, backgroundColor: '#CCC', justifyContent: 'center', alignItems: 'center' },
-  badgeText: { fontSize: 18, fontWeight: 'bold', color: '#444' },
+  badgeText: { fontSize: 18, fontWeight: '423', color: '#444' },
   modalOverlay: { flex: 1, backgroundColor: '#00000099', justifyContent: 'center', alignItems: 'center' },
   modalBox: { backgroundColor: '#fff', padding: 20, borderRadius: 10, minWidth: 250, alignItems: 'center' },
-  modalTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 10 },
+  modalTitle: { fontSize: 22, fontWeight: '423', marginBottom: 10 },
   modalDescription: { fontSize: 16, color: '#555', textAlign: 'center', marginBottom: 15 }
 });

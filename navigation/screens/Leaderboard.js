@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   selectedTabText: {
     color: config.PRIMARY_ACCENT,
-    fontWeight: 'bold',
+    fontWeight: '423',
   },
   contentView: {
     padding: 20,
@@ -76,9 +76,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#444',
   },
-  impactHeader: { color: config.PRIMARY_ACCENT, fontWeight: 'bold', fontSize: 36, alignSelf: 'center', marginTop: 1 },
-  individualHeader: { color: config.PRIMARY_ACCENT, fontWeight: 'bold', fontSize: 33, alignSelf: 'center', marginTop: 1},
-  communityHeader: { color: config.PRIMARY_ACCENT, fontWeight: 'bold', fontSize: 30, alignSelf: 'center', marginTop: 1 },
+  impactHeader: { color: config.PRIMARY_ACCENT, fontWeight: '423', fontSize: 36, alignSelf: 'center', marginTop: 1 },
+  individualHeader: { color: config.PRIMARY_ACCENT, fontWeight: '423', fontSize: 33, alignSelf: 'center', marginTop: 1},
+  communityHeader: { color: config.PRIMARY_ACCENT, fontWeight: '423', fontSize: 30, alignSelf: 'center', marginTop: 1 },
   container: { backgroundColor: '#f2f2f2', flex: 1},
   darkContainer: { backgroundColor: '#111'},
   divider: { height: 1, backgroundColor: '#CCCCCC', width: '85%', alignSelf: 'center', marginVertical: 10 },
